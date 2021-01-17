@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student List</title>
+    <script>
+        function f_submit() {
+            var form = document.getElementById("boardForm");
+            form.submit();
+        }
+        function f_list() {
+            location.href = "/board/list";
+        }
+    </script>
+    <style>
+        table, tr, th, td {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div th:include="header :: header"></div>
+
+    <h1>Board Form</h1>
+    <hr />
+
+    <form id="boardForm" role="form" th:action="@{'/board/register'}" th:method="post">
+        <table>
+            <tbody>
+            <tr>
+                <th>Title : </th>
+                <td><input type="text" th:name="title" th:id="title" /></td>
+            </tr>
+            <tr>
+                <th>Content : </th>
+                <td><input type="text" th:name="content" th:id="content" /></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+
+    <hr />
+
+    <button onclick="f_submit()">등록</button>
+    <button onclick="f_list()">목록</button>
+
+    <div th:include="footer :: footer"></div>
+</body>
+</html>
